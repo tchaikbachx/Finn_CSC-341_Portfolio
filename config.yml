@@ -1,0 +1,13 @@
+baseURL: "https://example.org/"
+locale: en-us
+title: Finn's CSC-341 Portfolio
+theme: [hugo-PaperMod]
+
+params:
+  homeInfoParams:
+    Title: Welcome to Finn's portfolio
+    Content: Below you can find write-ups on each of the competencies and you can click on the button right below to go to the TchaikBachX Github organization.
+
+  socialIcons: # optional
+    - name: "Github"
+      url: "https://github.com/tchaikbachx"
