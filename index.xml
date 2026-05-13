@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Finn&#39;s CSC-341 Portfolio</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Finn&#39;s CSC-341 Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Apr 2026 08:19:13 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design</title>
+      <link>http://localhost:1313/competencies/design/</link>
+      <pubDate>Wed, 08 Apr 2026 08:19:13 -0500</pubDate>
+      <guid>http://localhost:1313/competencies/design/</guid>
+      <description>&lt;h2 id=&#34;needfinding&#34;&gt;Needfinding&lt;/h2&gt;
+&lt;p&gt;The needfinding preocess began with Collin&amp;rsquo;s personal experiences working with the music checkout system; this then lead to an observation session I had with him while he was working with the current system. This produced some notes, which can be found &lt;a href=&#34;https://github.com/tchaikbachx/Needfinding-and-Ideation/blob/main/Needfinding%20and%20Ideation.odt&#34;&gt;here&lt;/a&gt; under &amp;ldquo;Observation #2 (Finn observing Collin)&amp;rdquo;, which is shown below:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  Observation #2 (Finn observing Collin):
+• I want a sax
+• goes to saxophone page (lives somewhere in the filesystem (system -&amp;gt; music checkout -&amp;gt; instruments -&amp;gt; brass &amp;amp; woodwinds -&amp;gt; woodwind saxes.excel)
+• all of the ones with names are being borrowed, so look for the first one without a name
+• does that instrument actually exist (check locker physically)
+• is it in good quality
+• once I give green light on chosen instrument...
+    ◦ fill out current date, due date, and student email
+    ◦ fill out checkout list on paper (kinda useless nowadays)
+    ◦ student gets email (someone manually emails them)
+    ◦ student is told the locker and combo numbers in the email
+    ◦ student can reply to email if they need additional assistance
+    ◦ double-check that all data was actually populated (old-ass excel formulas handle all of that and sometimes they break)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;These observation notes then served as a basis for what needed to be addressed by the prototyping phase. In particular, a reoccurring theme was how manual the entire system was, requiring the user to perform several easily-automatable tasks such as emailing borrowers which could be (and were, by Collin&amp;rsquo;s memory) just as easy for the human user to forget to do.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Development</title>
+      <link>http://localhost:1313/competencies/development/</link>
+      <pubDate>Wed, 08 Apr 2026 08:19:13 -0500</pubDate>
+      <guid>http://localhost:1313/competencies/development/</guid>
+      <description>&lt;h1 id=&#34;medium-scale-abstraction&#34;&gt;Medium-scale Abstraction&lt;/h1&gt;
+&lt;p&gt;For the functions which update entries, they need to only update the columns for which values are passed, without editing the columns that don&amp;rsquo;t need to be updated. In order to do this, I initially used in-line conditionals to only include the columns for which values were non-null, but this ended up being quite unwieldy and needed to be tailor-made for each table, so instead I wrote a new function &lt;code&gt;updateIfNotNull()&lt;/code&gt; (shown below) which takes the name of the field and the value to change, and returns a string containing the relevant string for the SQL query.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Engineering</title>
+      <link>http://localhost:1313/competencies/engineering/</link>
+      <pubDate>Wed, 08 Apr 2026 08:19:13 -0500</pubDate>
+      <guid>http://localhost:1313/competencies/engineering/</guid>
+      <description>&lt;h1 id=&#34;infrastructure&#34;&gt;Infrastructure&lt;/h1&gt;
+&lt;p&gt;I used VSCode with the Git extension as well as Konsole running as both a standalone terminal and through VSCode. This allowed for quick Git actions (other than making PRs, which had to be done through GitHub via browser) and VSCode itself gave nice formatting for the Python code I was writing.&lt;/p&gt;
+&lt;p&gt;There was a point where the filesystem was a bit messy and this resulted in packages not being located when they needed to be called; VSCode let me know which packages were causing problems so that &lt;a href=&#34;https://github.com/tchaikbachx/image/pull/10&#34;&gt;I could adjust their filepaths&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Verification</title>
+      <link>http://localhost:1313/competencies/verification/</link>
+      <pubDate>Wed, 08 Apr 2026 08:19:13 -0500</pubDate>
+      <guid>http://localhost:1313/competencies/verification/</guid>
+      <description>&lt;h1 id=&#34;testing-strategies&#34;&gt;Testing Strategies&lt;/h1&gt;
+&lt;p&gt;Since I wrote most of the back-end, I was also responsible for running some tests on it. In particular, I needed to test the functionality of adding, deleting, and changing entries in any given table. In order to test these, I made some dummy instruments and used them to manipulate a test database which was both initialized and deleted as part of the testing process, running unit tests to make sure that bad data couldn&amp;rsquo;t be added to the tables. Examples of these can be found below:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

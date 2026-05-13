@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Design | Finn&#39;s CSC-341 Portfolio</title>
+<meta name="keywords" content="">
+<meta name="description" content="Needfinding
+The needfinding preocess began with Collin&rsquo;s personal experiences working with the music checkout system; this then lead to an observation session I had with him while he was working with the current system. This produced some notes, which can be found here under &ldquo;Observation #2 (Finn observing Collin)&rdquo;, which is shown below:
+
+  Observation #2 (Finn observing Collin):
+• I want a sax
+• goes to saxophone page (lives somewhere in the filesystem (system -&gt; music checkout -&gt; instruments -&gt; brass &amp; woodwinds -&gt; woodwind saxes.excel)
+• all of the ones with names are being borrowed, so look for the first one without a name
+• does that instrument actually exist (check locker physically)
+• is it in good quality
+• once I give green light on chosen instrument...
+    ◦ fill out current date, due date, and student email
+    ◦ fill out checkout list on paper (kinda useless nowadays)
+    ◦ student gets email (someone manually emails them)
+    ◦ student is told the locker and combo numbers in the email
+    ◦ student can reply to email if they need additional assistance
+    ◦ double-check that all data was actually populated (old-ass excel formulas handle all of that and sometimes they break)
+
+
+These observation notes then served as a basis for what needed to be addressed by the prototyping phase. In particular, a reoccurring theme was how manual the entire system was, requiring the user to perform several easily-automatable tasks such as emailing borrowers which could be (and were, by Collin&rsquo;s memory) just as easy for the human user to forget to do.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/competencies/design/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/competencies/design/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Finn&#39;s CSC-341 Portfolio (Alt + H)">Finn&#39;s CSC-341 Portfolio</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Design
+    </h1>
+    <div class="post-meta"><span title='2026-04-08 08:19:13 -0500 CDT'>April 8, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="needfinding">Needfinding<a hidden class="anchor" aria-hidden="true" href="#needfinding">#</a></h2>
+<p>The needfinding preocess began with Collin&rsquo;s personal experiences working with the music checkout system; this then lead to an observation session I had with him while he was working with the current system. This produced some notes, which can be found <a href="https://github.com/tchaikbachx/Needfinding-and-Ideation/blob/main/Needfinding%20and%20Ideation.odt">here</a> under &ldquo;Observation #2 (Finn observing Collin)&rdquo;, which is shown below:</p>
+<blockquote>
+<pre><code>  Observation #2 (Finn observing Collin):
+• I want a sax
+• goes to saxophone page (lives somewhere in the filesystem (system -&gt; music checkout -&gt; instruments -&gt; brass &amp; woodwinds -&gt; woodwind saxes.excel)
+• all of the ones with names are being borrowed, so look for the first one without a name
+• does that instrument actually exist (check locker physically)
+• is it in good quality
+• once I give green light on chosen instrument...
+    ◦ fill out current date, due date, and student email
+    ◦ fill out checkout list on paper (kinda useless nowadays)
+    ◦ student gets email (someone manually emails them)
+    ◦ student is told the locker and combo numbers in the email
+    ◦ student can reply to email if they need additional assistance
+    ◦ double-check that all data was actually populated (old-ass excel formulas handle all of that and sometimes they break)
+</code></pre>
+</blockquote>
+<p>These observation notes then served as a basis for what needed to be addressed by the prototyping phase. In particular, a reoccurring theme was how manual the entire system was, requiring the user to perform several easily-automatable tasks such as emailing borrowers which could be (and were, by Collin&rsquo;s memory) just as easy for the human user to forget to do.</p>
+<h2 id="ideation">Ideation<a hidden class="anchor" aria-hidden="true" href="#ideation">#</a></h2>
+<p>After my observation of Collin, I did some <a href="https://github.com/tchaikbachx/Needfinding-and-Ideation/blob/main/Prototyping.odt">text ideation</a>, shown below:</p>
+<blockquote>
+<pre><code>• 2-pane view
+    ◦ one pane has all of the instruments (with search bar)
+        ▪ clicking on instrument blows up details on it
+    ◦ other pane has actions
+        ▪ checkout
+        ▪ add
+        ▪ remove
+        ▪ other stuff idk
+• python + sql + docker for back-end
+• whatever web stuff for front-end
+• 2 branches?
+    ◦ inventory system and checkout system separate
+        ▪ would be nice for profs to be able to just see the inventory without needing to edit things
+        ▪ what would profs want to do?
+            • search for instruments
+            • some kind of export system for paper or excel formats
+            • add/remove entries
+    ◦ some inventory thing -&gt; checkout system front-end
+• data fields
+    ◦ family (brass, woodwind, etc)
+        ▪ type (trumpet, flute, etc)
+            • name + id (sequential ids)
+• locker class
+    ◦ contained instruments list
+• instrument class
+    ◦ what am I
+    ◦ where am I
+    ◦ who owns me
+</code></pre>
+</blockquote>
+<p>I spoke with Collin about these points while writing them, and we bounced ideas off each other. We did some basic testing where we said out-loud what which button-presses and similar actions could be saved by doing these things. The 2-pane view concept arose from the desire to see all of the relevant data in one place, as switching between several excel tabs and files was very taxing for the user both in terms of time and effort.</p>
+<p>Consequently, we decided that one of the things the final product would need to have is a filtering system to aid with the planned master instrument list, and we would also like to have everything easily <em>visible</em> at a glance, as poor accessibility was one of the issues with the old system.</p>
+<h2 id="prototyping">Prototyping<a hidden class="anchor" aria-hidden="true" href="#prototyping">#</a></h2>
+<p>Extending from needfinding, we got to work on a <a href="https://github.com/tchaikbachx/Prototyping/blob/main/prototype.jpeg">paper prototype</a>. In particular, I made the pane at bottom-left of the image.
+<img alt="image" loading="lazy" src="/competencies/design/prototype.jpeg"></p>
+<p>These prototypes built off of the complaints raised during the needfinding process. In particular, we identified that the instruments should exist in a unified view where all of their info can be seen simultaneously, as the current system uses several tabs in an excel sheet, requiring a lot of looking around for stuff. Likewise, we put all of the relevant table actions (&ldquo;checkout&rdquo;, &ldquo;add&rdquo;, &ldquo;remove&rdquo;, as noted above) alongside the info pane for easy access. Our prototypes then went to Erik Jarvis for review, and he responded favorably.</p>
+<h2 id="evaluation">Evaluation<a hidden class="anchor" aria-hidden="true" href="#evaluation">#</a></h2>
+<p>I got a friend who isn&rsquo;t familiar with the Music Checkout Department to try engaging with the system as a student and operator, and had him give his thoughts on how straightforward everything was to navigate and understand. He liked the UI and thought it was pretty simple to use the filters to find instruments, but thought that the admin access was a little weirdly positioned on the page and that it should have more information on the Music Checkout Department in general.</p>
+<p>Our average user will be more familiar with the department than him, so this wasn&rsquo;t a major concern but we decided to include plenty of information on it in the final product anyway just in case. We also added another admin login button lower on the page to make it easier to reach when reading the policies on the main page.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Finn&#39;s CSC-341 Portfolio</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
